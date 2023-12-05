@@ -8,7 +8,10 @@ import { UserInputGraphql } from "../dtos/user.input.graphql";
 import { UpdateUserUseCase } from "../../../application/use-cases/user/update-user";
 import { UserUpdateInputGraphql } from "../dtos/user-update.input.graphql";
 import { DeleteUserByIdUseCase } from "../../../application/use-cases/user/delete-user-by-id";
+import { UseGuards } from "@nestjs/common";
+import { JwtGuard } from "../../security/jwt-guard";
 
+@UseGuards(JwtGuard)
 @Resolver()
 export class UserResolver {
   constructor(

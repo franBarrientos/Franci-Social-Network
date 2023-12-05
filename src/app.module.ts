@@ -3,11 +3,13 @@ import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { ResolversModule } from "./infrastructure/graphql/resolvers.module";
-import { ConfigModule } from "@nestjs/config";
+import { ConfigModule, ConfigService } from "@nestjs/config";
 import { DbConfigModule } from "./infrastructure/typeorm/config/db-connection";
 import { RepositoriesModule } from "./infrastructure/typeorm/repositories/repositories.module";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { RestModule } from "./infrastructure/rest/rest.module";
+import { JwtModule } from "@nestjs/jwt";
+import { SecurityModule } from "./infrastructure/security/security.module";
 
 @Module({
   imports: [

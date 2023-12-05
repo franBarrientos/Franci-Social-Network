@@ -4,7 +4,10 @@ import { DeleteLikeUseCase } from "../../../application/use-cases/like/delete-li
 import { LikeInputGraphql } from "../dtos/like.input.graphql";
 import { LikeEntityGraphql } from "../entities/like.entity.graphql";
 import { LikeDto } from "../../../application/dtos/output";
+import { UseGuards } from "@nestjs/common";
+import { JwtGuard } from "../../security/jwt-guard";
 
+@UseGuards(JwtGuard)
 @Resolver()
 export class LikeResolver {
   constructor(

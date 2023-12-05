@@ -8,7 +8,10 @@ import { PostEntityGraphql } from "../entities/post.entity.graphql";
 import { PostDto } from "../../../application/dtos/output";
 import { PostInputGraphql } from "../dtos/post.input.graphql";
 import { PostUpdateInputGraphql } from "../dtos/post-update.input.graphql";
+import { UseGuards } from "@nestjs/common";
+import { JwtGuard } from "../../security/jwt-guard";
 
+@UseGuards(JwtGuard)
 @Resolver()
 export class PostResolver {
   constructor(

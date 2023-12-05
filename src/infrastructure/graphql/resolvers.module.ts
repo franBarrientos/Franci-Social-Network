@@ -9,6 +9,9 @@ import { FollowerUseCasesProxyModule } from "../use-cases-proxy/follower-use-cas
 import { FollowerResolver } from "./resolvers/follower.resolver";
 import { CommentResolver } from "./resolvers/comment.resolver";
 import { CommentUseCasesProxyModule } from "../use-cases-proxy/comment-use-cases-proxy.module";
+import { SecurityModule } from "../security/security.module";
+import { JwtModule, JwtService } from "@nestjs/jwt";
+import { ConfigService } from "@nestjs/config";
 
 @Module({
   imports: [
@@ -16,7 +19,8 @@ import { CommentUseCasesProxyModule } from "../use-cases-proxy/comment-use-cases
     PostUseCasesProxyModule.register(),
     LikeUseCasesProxyModule.register(),
     FollowerUseCasesProxyModule.register(),
-    CommentUseCasesProxyModule.register(),
+    CommentUseCasesProxyModule,
+    SecurityModule,
   ],
   providers: [
     UserResolver,
@@ -24,6 +28,7 @@ import { CommentUseCasesProxyModule } from "../use-cases-proxy/comment-use-cases
     LikeResolver,
     FollowerResolver,
     CommentResolver,
+    JwtService,
   ],
 })
 export class ResolversModule {}

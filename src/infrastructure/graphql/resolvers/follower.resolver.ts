@@ -4,7 +4,10 @@ import { FollowerDto } from "../../../application/dtos/output";
 import { FollowerInputGraphql } from "../dtos/follower.input.graphql";
 import { CreateFollowerUseCase } from "../../../application/use-cases/follower/create-follower";
 import { DeleteFollowerUseCase } from "../../../application/use-cases/follower/delete-follower";
+import { UseGuards } from "@nestjs/common";
+import { JwtGuard } from "../../security/jwt-guard";
 
+@UseGuards(JwtGuard)
 @Resolver()
 export class FollowerResolver {
   constructor(

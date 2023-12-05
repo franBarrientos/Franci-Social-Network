@@ -1,9 +1,10 @@
 import { Module } from "@nestjs/common";
 import { RepositoriesModule } from "../typeorm/repositories/repositories.module";
 import { BycrypService } from "./bycryp-service";
+import { JwtServiceImpl } from "./jwt-service-impl";
+import { JwtGuard } from "./jwt-guard";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
-import { JwtServiceImpl } from "./jwt-service-impl";
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { JwtServiceImpl } from "./jwt-service-impl";
       }),
     }),
   ],
-  providers: [BycrypService, JwtServiceImpl],
-  exports: [BycrypService, JwtServiceImpl],
+  providers: [BycrypService, JwtServiceImpl, JwtGuard],
+  exports: [BycrypService, JwtServiceImpl, JwtGuard],
 })
 export class SecurityModule {}

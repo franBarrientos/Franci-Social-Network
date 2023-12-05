@@ -5,7 +5,10 @@ import { UpdateCommentUseCase } from "../../../application/use-cases/comment/upd
 import { DeleteCommentUseCase } from "../../../application/use-cases/comment/delete-comment";
 import { CommentInputGraphql } from "../dtos/comment.input.graphql";
 import { CommentEntityGraphql } from "../entities/comment.entity.graphql";
+import { UseGuards } from "@nestjs/common";
+import { JwtGuard } from "../../security/jwt-guard";
 
+@UseGuards(JwtGuard)
 @Resolver()
 export class CommentResolver {
   constructor(
