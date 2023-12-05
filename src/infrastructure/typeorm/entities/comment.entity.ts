@@ -1,5 +1,6 @@
 import { Comment } from "../../../domain/Comment";
 import {
+  Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
@@ -24,6 +25,9 @@ export class CommentEntity implements Comment {
     onDelete: "CASCADE",
   })
   user: User;
+
+  @Column()
+  text: string;
 
   @CreateDateColumn()
   createdAt: Date;

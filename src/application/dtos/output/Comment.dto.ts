@@ -5,4 +5,5 @@ export interface CommentDto {
   user: UserInfoDto;
   createdAt: Date;
   updatedAt: Date;
+  text: string;
 }

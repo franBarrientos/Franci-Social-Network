@@ -16,4 +16,7 @@ export class CommentEntityGraphql implements CommentDto {
 
   @Field(() => GraphQLISODateTime, { nullable: true })
   updatedAt: Date;
+
+  @Field(() => String, { nullable: true })
+  text: string;
 }

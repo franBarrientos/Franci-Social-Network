@@ -20,7 +20,7 @@ export class PostRepositoryDb implements PostRepository {
     if (!(await this.userRepository.exist({ where: { id: post.userId } })))
       throw new HttpException(`User ${post.userId} does not exist`, 400);
 
-    return this.postRepository.save(post);
+    return this.postRepository.save({ ...post, user: post.userId });
   }
 
   async deletePost(id: number): Promise<boolean> {
@@ -61,8 +61,12 @@ export class PostRepositoryDb implements PostRepository {
       .findOneOrFail({
         where: { id },
         relations: {
-          likes: true,
-          comments: true,
+          likes: {
+            user: true,
+          },
+          comments: {
+            user: true,
+          },
         },
       })
       .catch(() => {

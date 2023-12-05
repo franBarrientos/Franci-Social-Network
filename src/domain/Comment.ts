@@ -6,4 +6,5 @@ export interface Comment {
   user: User;
   createdAt: Date;
   updatedAt: Date;
+  text: string;
 }

@@ -13,6 +13,7 @@ export class UserDtoMapper {
       posts: user.posts?.map(PostDtoMapper.toDto),
       followers: user.followers?.map(FollowerDtoMapper.toDto),
       followings: user.followings?.map(FollowingDtoMapper.toDto),
+      img: user.img,
     };
   }
 }

@@ -17,6 +17,7 @@ type CommentEntityGraphql {
   user: UserInfoEntityGraphqlDto!
   createdAt: DateTime
   updatedAt: DateTime
+  text: String
 }
 
 """
@@ -46,6 +47,7 @@ type UserEntityGraphql {
   posts: [PostEntityGraphql!]
   followers: [FollowerEntityGraphql!]
   followings: [FollowerEntityGraphql!]
+  img: String
 }
 
 type Query {
@@ -62,18 +64,27 @@ type Mutation {
   createPost(postToCreate: PostInputGraphql!): PostEntityGraphql!
   updatePost(id: Int!, dataToUpdate: PostUpdateInputGraphql!): PostEntityGraphql!
   deletePost(id: Int!): Boolean!
+  createLike(likeAddDto: LikeInputGraphql!): LikeEntityGraphql!
+  deleteLike(idUser: Int!, idPost: Int!): Boolean!
+  createFollower(followerAddDto: FollowerInputGraphql!): FollowerEntityGraphql!
+  deleteFollower(idUser: Int!, idFollowed: Int!): Boolean!
+  createComment(commentAddDto: CommentInputGraphql!): CommentEntityGraphql!
+  updateComment(commentId: Int!, commentUpdated: String!): CommentEntityGraphql!
+  deleteComment(idComment: Int!): Boolean!
 }
 
 input UserInputGraphql {
   name: String!
   email: String!
   password: String!
+  img: String!
 }
 
 input UserUpdateInputGraphql {
   name: String
   email: String
   password: String
+  img: String
 }
 
 input PostInputGraphql {
@@ -86,4 +97,20 @@ input PostUpdateInputGraphql {
   img: String
   title: String
   userId: Int
+}
+
+input LikeInputGraphql {
+  post: Int!
+  user: Int!
+}
+
+input FollowerInputGraphql {
+  followedUserId: Int!
+  followerUserId: Int!
+}
+
+input CommentInputGraphql {
+  postId: Int!
+  text: String!
+  userId: Int!
 }

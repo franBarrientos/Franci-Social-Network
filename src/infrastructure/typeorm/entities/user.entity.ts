@@ -25,4 +25,7 @@ export class UserEntity implements User {
 
   @OneToMany(() => FollowerEntity, (follower) => follower.followerUser)
   followings: FollowerEntity[];
+
+  @Column({ nullable: true })
+  img?: string;
 }

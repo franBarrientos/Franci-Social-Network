@@ -1,5 +1,4 @@
 import { PostDto } from "./Post.dto";
-import { LikeDto } from "./Like.dto";
 import { FollowerDto } from "./Follower.dto";
 
 export interface UserDto {
@@ -9,4 +8,5 @@ export interface UserDto {
   posts: PostDto[];
   followers: FollowerDto[];
   followings: FollowerDto[];
+  img?: string;
 }

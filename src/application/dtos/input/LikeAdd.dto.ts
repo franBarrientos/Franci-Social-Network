@@ -1,4 +1,4 @@
 export interface LikeAddDto {
-  userId: number;
-  postId: number;
+  user: number;
+  post: number;
 }

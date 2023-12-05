@@ -11,6 +11,7 @@ export class CommentDtoMapper {
       },
       createdAt: comment.createdAt,
       updatedAt: comment.updatedAt,
+      text: comment.text,
     };
   }
 }

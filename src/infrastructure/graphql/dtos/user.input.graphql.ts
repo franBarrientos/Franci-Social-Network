@@ -1,6 +1,12 @@
 import { UserAddDto } from "../../../application/dtos/input";
 import { Field, InputType } from "@nestjs/graphql";
-import { IsEmail, IsNotEmpty, IsString, MaxLength } from "class-validator";
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from "class-validator";
 
 @InputType()
 export class UserInputGraphql implements UserAddDto {
@@ -22,4 +28,10 @@ export class UserInputGraphql implements UserAddDto {
   @IsNotEmpty()
   @MaxLength(80)
   password: string;
+
+  @Field(() => String)
+  @IsString()
+  @IsOptional()
+  @MaxLength(80)
+  img?: string;
 }

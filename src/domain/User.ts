@@ -9,4 +9,5 @@ export interface User {
   posts: Post[];
   followers: Follower[];
   followings: Follower[];
+  img?: string;
 }

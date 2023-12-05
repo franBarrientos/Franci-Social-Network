@@ -24,4 +24,7 @@ export class UserEntityGraphql implements UserDto {
 
   @Field(() => [FollowerEntityGraphql], { nullable: true })
   followings: FollowerDto[];
+
+  @Field(() => String, { nullable: true })
+  img?: string;
 }
