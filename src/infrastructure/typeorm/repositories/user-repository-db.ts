@@ -5,6 +5,9 @@ import { User } from "../../../domain/User";
 import { UserEntity } from "../entities/user.entity";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
+import { Error } from "@apollo/server/src/plugin/schemaReporting/generated/operations";
+import * as console from "console";
+import e from "express";
 
 @Injectable()
 export class UserRepositoryDb implements UserRepository {
@@ -102,5 +105,11 @@ export class UserRepositoryDb implements UserRepository {
         console.log(e);
         throw new HttpException("Something went wrong", 500);
       });
+  }
+
+  getUserByEmail(email: string): Promise<User> {
+    return this.userRepository.findOneByOrFail({ email }).catch(() => {
+      throw new HttpException(`User with email ${email} not found`, 404);
+    });
   }
 }

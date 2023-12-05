@@ -7,6 +7,7 @@ import { ConfigModule } from "@nestjs/config";
 import { DbConfigModule } from "./infrastructure/typeorm/config/db-connection";
 import { RepositoriesModule } from "./infrastructure/typeorm/repositories/repositories.module";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
+import { RestModule } from "./infrastructure/rest/rest.module";
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin
     }),
     DbConfigModule,
     RepositoriesModule,
+    RestModule,
   ],
 })
 export class AppModule {}

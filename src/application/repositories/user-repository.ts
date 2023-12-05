@@ -13,4 +13,6 @@ export interface UserRepository {
   updateUser(id: number, user: Partial<UserAddDto>): Promise<User>;
 
   deleteUser(id: number): Promise<boolean>;
+
+  getUserByEmail(email: string): Promise<User>;
 }
