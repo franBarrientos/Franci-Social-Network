@@ -32,7 +32,9 @@ export class UserResolver {
   }
 
   @Mutation(() => UserEntityGraphql)
-  async createUser(@Args("userToCreate") user: UserInputGraphql) {
+  async createUser(
+    @Args("userToCreate") user: UserInputGraphql,
+  ): Promise<UserDto> {
     return await this.createUserUseCase.execute(user);
   }
 
@@ -40,7 +42,7 @@ export class UserResolver {
   async updateUser(
     @Args("id", { type: () => Int }) id: number,
     @Args("dataToUpdate") user: UserUpdateInputGraphql,
-  ) {
+  ): Promise<UserDto> {
     return await this.updateUserUseCase.execute(id, user);
   }
 

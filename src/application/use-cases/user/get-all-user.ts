@@ -1,4 +1,3 @@
-import { Injectable } from "@nestjs/common";
 import { UserRepository } from "../../repositories/user-repository";
 import { UserDto } from "../../dtos/output";
 import { UserDtoMapper } from "../../mappers/userDto.mapper";

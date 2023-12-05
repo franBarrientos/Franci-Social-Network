@@ -7,10 +7,10 @@ import { GetOneByIdUseCase } from "../../application/use-cases/user/get-one-by-i
 import { UpdateUserUseCase } from "../../application/use-cases/user/update-user";
 import { DeleteUserByIdUseCase } from "../../application/use-cases/user/delete-user-by-id";
 
-export class UseCasesProxyModule {
+export class UserUseCasesProxyModule {
   static register(): DynamicModule {
     return {
-      module: UseCasesProxyModule,
+      module: UserUseCasesProxyModule,
       imports: [RepositoriesModule],
       providers: [
         {

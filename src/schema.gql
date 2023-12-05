@@ -51,12 +51,17 @@ type UserEntityGraphql {
 type Query {
   getAllUsers: [UserEntityGraphql!]!
   getOneUserById(id: Int!): UserEntityGraphql!
+  getAllFollowingPosts(id: Int!): [PostEntityGraphql!]!
+  getPostById(id: Int!): PostEntityGraphql!
 }
 
 type Mutation {
   createUser(userToCreate: UserInputGraphql!): UserEntityGraphql!
   updateUser(id: Int!, dataToUpdate: UserUpdateInputGraphql!): UserEntityGraphql!
   deleteUser(id: Int!): Boolean!
+  createPost(postToCreate: PostInputGraphql!): PostEntityGraphql!
+  updatePost(id: Int!, dataToUpdate: PostUpdateInputGraphql!): PostEntityGraphql!
+  deletePost(id: Int!): Boolean!
 }
 
 input UserInputGraphql {
@@ -69,4 +74,16 @@ input UserUpdateInputGraphql {
   name: String
   email: String
   password: String
+}
+
+input PostInputGraphql {
+  img: String!
+  title: String!
+  userId: Int!
+}
+
+input PostUpdateInputGraphql {
+  img: String
+  title: String
+  userId: Int
 }
